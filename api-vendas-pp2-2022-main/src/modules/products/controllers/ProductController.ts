@@ -3,6 +3,7 @@ import CreateProductService from "../services/CreateProductService";
 import DeleteProductService from "../services/DeleteProductService";
 import ListProductService from "../services/ListProductService";
 import ShowProductService from "../services/ShowProductService";
+import UpdateProductService from "../services/UpdateProductService";
 
 class ProductController {
   // não se trata regra de negócio aqui
@@ -34,6 +35,15 @@ class ProductController {
     const deleteProductService = new DeleteProductService();
     await deleteProductService.execute(id);
     return response.json();
+  }
+  public async update(request: Request, response: Response): Promise<Response> {
+    //recupera id, name, price, quantity
+    const {id} = request.params
+    const {name, price,quantity } = request.body
+    const updateProductService = new UpdateProductService()
+    const ProductUpdated = await
+        updateProductService.execute({ id,name, price, quantity})
+    return response.json(ProductUpdated)
   }
 }
 

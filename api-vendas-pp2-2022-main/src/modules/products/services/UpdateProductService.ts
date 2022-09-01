@@ -14,12 +14,12 @@ interface IRequest{
 class UpdateProductService {
     public async execute({ id,name, quantity, price}: IRequest): Promise<Product> {
         const productRepository = getCustomRepository(ProductRepository)
-        const productExist = await productRepository.findOne(name)
+        const productExist = await productRepository.findOne(id)
         if(!productExist){
             throw new AppError("Produto não existe",400)
         }
         // verifica se o nome alterado já existe no BD
-        const nameExist = await productRepository.findOne(name)
+        const nameExist = await productRepository.findByName(name)
         if (nameExist){
             throw new AppError('Nome do Produto já existe')
         }

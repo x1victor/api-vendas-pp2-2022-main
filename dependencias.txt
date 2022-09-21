@@ -1,0 +1,7 @@
+bcryptjs
+	hash() -> gerar o criptografia
+	compare() -> compara
+
+jsonwebtoken
+	sign() -> gerar o toke com chave privada
+	verify() -> verifica se o token informado está OK

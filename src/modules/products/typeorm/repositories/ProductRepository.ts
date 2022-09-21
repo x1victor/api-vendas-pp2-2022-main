@@ -7,7 +7,7 @@ class ProductRepository extends Repository<Product> {
     // herdamos os métodos CRUD, mas podemos criar novos métodos
     // procura pelo nome do produto
     // método assíncrono 
-    async findByName(name: string): Promise<Product | undefined>{
+    public async findByName(name: string): Promise<Product | undefined>{
         // await - aguardar/esperar pelo resultado da busca
         let product = await this.findOne({
             where: {

@@ -10,3 +10,5 @@ class AppError {
         this.statusCode = statusCode
     }
 }
+
+export default AppError
